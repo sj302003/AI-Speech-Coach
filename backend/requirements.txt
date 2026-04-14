@@ -1,0 +1,12 @@
+Flask==2.2.5
+Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.25
+Werkzeug==2.2.3
+gunicorn
+
+requests
+python-dotenv
+psycopg2-binary
+assemblyai
+PyJWT==2.8.0
+cryptography>=41.0.0

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>AI Speech Analyzer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+
+<body>
+
+<h1>AI Speech Analyzer</h1>
+
+<!-- ---------------- LOGIN SECTION ---------------- -->
+<div>
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn" style="display:none;">Logout</button>
+    <p id="userEmail"></p>
+</div>
+
+<hr>
+
+<!-- ---------------- ACTION BUTTONS ---------------- -->
+<div>
+    <button onclick="showUpload()">Upload Audio</button>
+    <button onclick="showRecord()">Record Audio</button>
+</div>
+
+<hr>
+
+<!-- ---------------- UPLOAD SECTION ---------------- -->
+<div id="uploadSection" style="display:none">
+
+    <h3>Upload Audio</h3>
+
+    <input type="file" id="audioUpload">
+
+    <br><br>
+
+    <!-- MODEL SELECT -->
+    <label>Select Model:</label>
+    <select id="modelSelectUpload">
+        <option value="google/gemini-2.5-pro">Gemini</option>
+        <option value="openai/gpt-5.4">GPT 5.4</option>
+        <option value="openai/gpt-5-chat">GPT Chat</option>
+        <option value="openai/gpt-5.1">GPT 5.1</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="submitAudio()">Analyze</button>
+
+</div>
+
+<!-- 🔄 LOADING SPINNER -->
+<div id="loadingSpinner" style="display:none;">
+    <div class="spinner"></div>
+    <p>Analyzing your speech...</p>
+</div>
+
+<!-- ---------------- RECORD SECTION ---------------- -->
+<div id="recordSection" style="display:none">
+
+    <h3>Record Audio</h3>
+
+    <button onclick="startRecording()">Start Recording</button>
+    <button onclick="stopRecording()">Stop Recording</button>
+
+    <br><br>
+
+    <!-- MODEL SELECT -->
+    <label>Select Model:</label>
+    <select id="modelSelectRecord">
+        <option value="google/gemini-2.5-pro">Gemini</option>
+        <option value="openai/gpt-5.4">GPT 5.4</option>
+        <option value="openai/gpt-5-chat">GPT Chat</option>
+        <option value="openai/gpt-5.1">GPT 5.1</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="submitRecordedAudio()">Analyze</button>
+
+</div>
+
+<hr>
+
+<!-- ---------------- RESULTS ---------------- -->
+<h3>Transcription</h3>
+<p id="transcription"></p>
+
+<h3>Summary</h3>
+<p id="summary"></p>
+
+<h3>Evaluation</h3>
+<p id="sentiment"></p>
+
+<hr>
+
+<!-- ---------------- HISTORY ---------------- -->
+<h3>History</h3>
+
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Audio Name</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody id="history"></tbody>
+</table>
+
+
+<!-- ---------------- CLERK ---------------- -->
+<script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="pk_test_dGFsZW50ZWQtY2hvdy05NS5jbGVyay5hY2NvdW50cy5kZXYk"
+  src="https://unpkg.com/@clerk/clerk-js@4.73.3/dist/clerk.browser.js">
+</script>
+
+<!-- ---------------- SCRIPT ---------------- -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
